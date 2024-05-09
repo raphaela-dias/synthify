@@ -28,30 +28,29 @@ documents = []
 # Loop through all files and subdirectories in the main directory
 for root, dirs, files in os.walk(directory_path):
 
-  for filename in files:
+    for filename in files:
 
-    file_path = os.path.join(root, filename)
-    # Identify and load document based on extension
-    if filename.endswith(".pdf"):
-      pdf_loader = PyPDFLoader(file_path)
-      document = pdf_loader.load()
-    elif filename.endswith((".txt", ".doc", ".docx")):
-      text_loader = TextLoader(file_path)
-      document = text_loader.load()
-    else:
-      # Handle unsupported file types
-      print(f"Skipping unsupported file: {filename}")
-      continue  # Skip unsupported files
+        file_path = os.path.join(root, filename)
+        # Identify and load document based on extension
+        if filename.endswith(".pdf"):
+            pdf_loader = PyPDFLoader(file_path)
+            print(filename)
+            document = pdf_loader.load()
+        elif filename.endswith((".txt", ".doc", ".docx")):
+            text_loader = TextLoader(file_path)
+            print(filename)
+            document = text_loader.load()
 
-  # Split the current document
-  text_splitter = RecursiveCharacterTextSplitter(
-      chunk_size=300,  
-      chunk_overlap=70
-  )
-  split_docs = text_splitter.split_documents(document)
+        # Split the current document
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=300,  
+            chunk_overlap=70
+        )
 
-  # Add the split chunks
-  documents.extend(split_docs)
+        split_docs = text_splitter.split_documents(document)
+
+        # Add the split chunks
+        documents.extend(split_docs)
 
 # Embedding the chunks to vectorstores
 embeddings = OpenAIEmbeddings(openai_api_key=api_key)
