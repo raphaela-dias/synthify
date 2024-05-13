@@ -2,5 +2,3 @@ env
 *.env
 /test
 /db
-search_csv.py
-test_google.py
