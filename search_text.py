@@ -1,4 +1,3 @@
-from openai import OpenAI
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -40,17 +39,14 @@ for root, dirs, files in os.walk(directory_path):
             pdf_loader = PyPDFLoader(file_path)
             print(filename)
             document = pdf_loader.load()
-        # elif filename.endswith((".txt", ".doc")):
-        #     text_loader = TextLoader(file_path)
-        #     print(filename)
-        #     document = text_loader.load()
+        elif filename.endswith((".txt", ".doc")):
+            text_loader = TextLoader(file_path)
+            print(filename)
+            document = text_loader.load()
         elif filename.endswith(".docx"):
             xml_loader = Docx2txtLoader(file_path)
             print(filename)
             document = xml_loader.load()
-        elif filename.endswith(".xlsx"):
-            excel_loader = UnstructuredExcelLoader(file_path)
-            print(filename)
 
         # Split the current document
         text_splitter = RecursiveCharacterTextSplitter(
