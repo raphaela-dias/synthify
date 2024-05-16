@@ -31,7 +31,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000, 
     chunk_overlap=100)
 
-documents = text_splitter.create_documents([d["content"] for d in documents])
+documents = text_splitter.create_documents([(f'{d["source"]} - {d["content"]}') for d in documents])
 
 # Criar embeddings usando OpenAI
 embeddings = OpenAIEmbeddings()
