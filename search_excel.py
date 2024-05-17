@@ -4,9 +4,10 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
+import ast
 import os
 
-# Loading api key
+# Carrega a API key
 load_dotenv()
 api_key = os.environ.get("OPENAI_API_KEY")
 
@@ -14,23 +15,24 @@ def search_excel(query):
     # Criar embeddings usando OpenAI
     embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
-    persist_directory = 'db_csv'
+    # Diretório da base de embeddings
+    persist_directory = 'db_excel'
 
-    # Criar um modelo de linguagem OpenAI
+    # Cria o LLM
     llm = ChatOpenAI(
         openai_api_key= api_key,
         model_name='gpt-3.5-turbo',
         temperature=0.0
     )
 
-    # Defining the conversational memory
+    # Memória de conversa
     retaining_memory = ConversationBufferWindowMemory(
         memory_key='chat_history',
         k=5,
         return_messages=True
     )
 
-    # Prepare database for search
+    # Prepara a base para consulta
     db_excel = Chroma(
         persist_directory=persist_directory, 
         embedding_function=embeddings)
@@ -42,7 +44,18 @@ def search_excel(query):
         memory=retaining_memory
     )
 
+    # Mostra resposta
     answer = question_answering.invoke({"question": "Answer in brazilian portuguese and only with information that is in the documents provided." + query})
     result = answer['answer']
 
-    return result
+    # # Mostra fonte utilizada para a resposta
+    results = db_excel.similarity_search_with_relevance_scores(query, k=1)
+    if len(results) == 0 or results[0][1] < 0.7:
+        print(f"Não foram encontradas fontes.")
+    else:
+        sources = []
+        for doc, _score in results:
+            metadata = ast.literal_eval(doc.page_content.split(" - ")[-1])  # Extrai o metadata
+            sources.append(metadata["filename"])  # Acessa o filename
+
+    return result, sources
