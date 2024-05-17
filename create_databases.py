@@ -22,7 +22,7 @@ def upload_excel(file_path):
 
     # Criar documentos a partir dos dados
     documents = [
-        {"source": row["Número"], "content": row["texto"]} for _, row in df.iterrows()
+        {"source": row["Número"], "content": row["texto"], "metadata": {"filename": file_path}} for _, row in df.iterrows()
     ]
 
     # Dividir os documentos em chunks menores
@@ -31,11 +31,11 @@ def upload_excel(file_path):
         chunk_overlap=100
     )
 
-    documents = text_splitter.create_documents([(f'{d["source"]} - {d["content"]}') for d in documents])
+    documents = text_splitter.create_documents([(f'{d["source"]} - {d["content"]} - {d["metadata"]}') for d in documents])
 
     embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
-    persist_directory = 'db_csv'
+    persist_directory = 'db_excel'
 
     # Criar um vetor store 
     db_csv = Chroma.from_documents(
