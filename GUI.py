@@ -1,7 +1,8 @@
 from tkinter import scrolledtext
 from tkinter import filedialog
-from create_databases import upload_excel
+from create_databases import upload_excel, upload_docx
 from search_excel import search_excel
+from search_docx import search_docx
 import tkinter as tk
 
 # Criando a janela principal
@@ -18,10 +19,12 @@ def upload_file():
   )
   if file_path:
     # Exibe o caminho do arquivo selecionado
-    file_path_label.config(text=f"Arquivo selecionado: {file_path}")
+    file_path_label.config(text=f"Arquivo selecionado: {file_path}\nArquivo carregado com sucesso.")
 
     if file_path.endswith(".xlsx"):
       upload_excel(file_path)
+    elif file_path.endswith(".docx"):
+      upload_docx(file_path)
 
 # Função para fazer busca no histórico de tickets
 def search_tickets():
@@ -32,8 +35,14 @@ def search_tickets():
   sources_text.delete("1.0", tk.END)
   sources_text.insert(tk.END, result[1])
 
-
-
+def search_documentation():
+  question = question_entry.get("1.0", tk.END).strip()
+  result = search_docx(question)
+  answer_text.delete("1.0", tk.END)
+  answer_text.insert(tk.END, result[0])
+  sources_text.delete("1.0", tk.END)
+  sources_text.insert(tk.END, result[1])
+  
 
 
 # Campo de entrada da pergunta
@@ -50,7 +59,7 @@ button_frame.pack()
 ask_button1 = tk.Button(button_frame, text="Enviar novo arquivo para a base", command=upload_file)
 ask_button1.pack(side="left", padx=10)
 
-ask_button2 = tk.Button(button_frame, text="Procurar nas documentações")
+ask_button2 = tk.Button(button_frame, text="Procurar nas documentações", command= search_documentation)
 ask_button2.pack(side="left", padx=10)
 
 ask_button3 = tk.Button(button_frame, text="Procurar no histórico de tickets", command=search_tickets)
