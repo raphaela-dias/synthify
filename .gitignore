@@ -1,5 +1,5 @@
 env
 *.env
 /test
-/db
+/db_excel
 __pycache__
