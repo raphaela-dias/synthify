@@ -28,7 +28,10 @@ def search_tickets():
   question = question_entry.get("1.0", tk.END).strip()
   result = search_excel(question)
   answer_text.delete("1.0", tk.END)
-  answer_text.insert(tk.END, result)
+  answer_text.insert(tk.END, result[0])
+  sources_text.delete("1.0", tk.END)
+  sources_text.insert(tk.END, result[1])
+
 
 
 
