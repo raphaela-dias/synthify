@@ -51,7 +51,7 @@ def search_excel(query):
     # # Mostra fonte utilizada para a resposta
     results = db_excel.similarity_search_with_relevance_scores(query, k=1)
     if len(results) == 0 or results[0][1] < 0.7:
-        print(f"Não foram encontradas fontes.")
+        sources = "Não foram encontradas fontes."
     else:
         sources = []
         for doc, _score in results:

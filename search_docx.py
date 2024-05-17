@@ -40,20 +40,18 @@ def search_docx(query):
     # Criar uma cadeia de recuperação QA
     question_answering = ConversationalRetrievalChain.from_llm(
         llm,
-        retriever=db_docx.as_retriever,
+        retriever=db_docx.as_retriever(),
         memory=retaining_memory
     )
 
     # Mostra resposta
     answer = question_answering.invoke({"question": "Answer in brazilian portuguese and only with information that is in the documents provided." + query})
     result = answer['answer']
-    print(answer)
 
     # Mostra fonte utilizada para a resposta
     results = db_docx.similarity_search_with_relevance_scores(query, k=1)
-    print(results)
     if len(results) == 0 or results[0][1] < 0.7:
-        print(f"Unable to find matching results.")
+        sources = "Não foram encontradas fontes."
     else:
         sources = [doc.metadata.get("source", None) for doc, _score in results]
 
