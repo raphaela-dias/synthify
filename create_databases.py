@@ -1,31 +1,32 @@
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import Docx2txtLoader
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from dotenv import load_dotenv
 import pandas as pd
 import os
 
-# Loading api key
+# Carrega API key
 load_dotenv()
 api_key = os.environ.get("OPENAI_API_KEY")
 
 def upload_excel(file_path):
-    # Carregar a base de chamados
+    # Carrega o arquivo .excel
     df = pd.read_excel(file_path)
 
-    # Selecionar as colunas relevantes para a busca
+    # Seleciona as colunas relevantes para a busca
     features = ['Sintoma', 'Descrição', 'Resolução']
 
-    # Combinar as features em uma única coluna de texto
+    # Combina as features em uma única coluna de texto
     df['texto'] = df[features].apply(lambda x: ' '.join(x.astype(str)), axis=1)
 
-    # Criar documentos a partir dos dados
+    # Cria documentos a partir dos dados
     documents = [
         {"source": row["Número"], "content": row["texto"], "metadata": {"filename": file_path}} for _, row in df.iterrows()
     ]
 
-    # Dividir os documentos em chunks menores
+    # Divide os documentos em chunks menores
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000, 
         chunk_overlap=100
@@ -37,9 +38,40 @@ def upload_excel(file_path):
 
     persist_directory = 'db_excel'
 
-    # Criar um vetor store 
-    db_csv = Chroma.from_documents(
+    # Cria um vetor store 
+    db_excel = Chroma.from_documents(
         documents=documents,
         embedding=embeddings,
         persist_directory=persist_directory
     )
+
+
+def upload_docx(file_path):
+    #Lista de chunks
+    documents = []
+
+    # Carrega arquivo .docx
+    xml_loader = Docx2txtLoader(file_path)
+    document = xml_loader.load()
+
+    # Divide os documentos em chunks menores
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,  
+        chunk_overlap=100
+    )
+    split_docs = text_splitter.split_documents(document)
+
+    # Adiciona os chunks na lita documents
+    documents.extend(split_docs)
+
+    embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+
+    persist_directory = 'db_docx'
+
+    #Cria um vetor store
+    db_docx = Chroma.from_documents(
+    documents=documents,
+    embedding=embeddings,
+    persist_directory=persist_directory
+)
+
