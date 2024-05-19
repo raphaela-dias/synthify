@@ -1,5 +1,4 @@
-from tkinter import scrolledtext
-from tkinter import filedialog
+from tkinter import scrolledtext, filedialog
 from create_databases import upload_excel, upload_docx
 from search_excel import search_excel
 from search_docx import search_docx
@@ -9,20 +8,18 @@ import speech_recognition as sr
 # Criando a janela principal
 window = tk.Tk()
 window.title("Synthify")
+window.geometry("1200x700")
+window.configure(bg="#F6F7F9")
 
 # Função para abrir a caixa de diálogo de seleção de arquivos
 def upload_file():
-    #Abre uma caixa de diálogo para o usuário escolher um arquivo e exibe o caminho do arquivo.
     file_path = filedialog.askopenfilename(
         initialdir="/",
         title="Selecione um arquivo",
         filetypes=(("Todos os arquivos", "*.*"), ("Arquivos de texto", "*.txt"),)
     )
     if file_path:
-        # Exibe o caminho do arquivo selecionado
         file_path_label.config(text=f"Arquivo selecionado: {file_path}\nArquivo carregado com sucesso.")
-
-        # Arquivos são separados em bases diferentes dependendo do tipo
         if file_path.endswith(".xlsx"):
             upload_excel(file_path)
         elif file_path.endswith(".docx"):
@@ -74,50 +71,86 @@ def clear_placeholder(event):
 # Texto padrão na entrada de pergunta
 default_text = "Insira sua pergunta aqui ou clique em 'Pressione para Falar' para começar."
 
-# Campo de entrada da pergunta
-question_label = tk.Label(window, text="Insira sua pergunta:")
-question_label.pack()
-question_entry = tk.Text(window, height=3)
+# Definições de estilo
+bg_color = "#F6F7F9"
+fg_color = "#000000"
+button_color = "#4B00FF"
+button_fg_color = "#FFFFFF"
+entry_bg_color = "#FFFFFF"
+entry_fg_color = "#000000"
+
+# Função para criar botões com estilo uniforme
+def create_button(text, command):
+    return tk.Button(
+        left_frame,
+        text=text,
+        font=("Arial", 12),
+        bg=button_color,
+        fg=button_fg_color,
+        command=command,
+        width=30,  # Largura do botão
+        height=2,  # Altura do botão
+        relief="flat",  # Remover bordas
+        highlightthickness=0,
+        bd=0
+    )
+
+# Layout
+left_frame = tk.Frame(window, bg=bg_color)
+left_frame.pack(side="left", fill="y")
+
+logo_label = tk.Label(left_frame, text="Synthify", font=('Helvetica', 16, 'bold'), bg=bg_color, fg="#4B00FF")
+logo_label.pack(pady=20)
+
+# Criar botões com tamanhos e estilos uniformes
+ask_button1 = create_button("Procurar nas documentações", search_documentation)
+ask_button1.pack(anchor='w', padx=10, pady=10)
+
+ask_button2 = create_button("Procurar no histórico de tickets", search_tickets)
+ask_button2.pack(anchor='w', padx=10, pady=10)
+
+ask_button3 = create_button("Procurar na internet", lambda: None)
+ask_button3.pack(anchor='w', padx=10, pady=10)
+
+speak_button = create_button("Pressione para falar", speak_to_text)
+speak_button.pack(anchor='w', padx=10, pady=10)
+
+upload_button = create_button("Enviar novo arquivo para a base", upload_file)
+upload_button.pack(anchor='w', padx=10, pady=10)
+
+user_info = tk.Frame(left_frame, bg=bg_color)
+user_info.pack(side="bottom", fill="x", padx=20, pady=20)
+
+user_label = tk.Label(user_info, text="👤 Shakshi Patel", font=("Arial", 12), bg=bg_color, fg=fg_color)
+user_label.pack(anchor="w")
+
+username_label = tk.Label(user_info, text="@shakshi123", font=("Arial", 10), bg=bg_color, fg=fg_color)
+username_label.pack(anchor="w")
+
+right_frame = tk.Frame(window, bg=bg_color)
+right_frame.pack(side="right", fill="both", expand=True, padx=20, pady=20)
+
+question_label = tk.Label(right_frame, text="Insira sua pergunta:", font=("Arial", 12), bg=bg_color, fg=fg_color)
+question_label.pack(anchor="w", pady=10)
+question_entry = tk.Text(right_frame, height=10, bg=entry_bg_color, fg=entry_fg_color)
 question_entry.insert(tk.END, default_text)
 question_entry.bind("<FocusIn>", clear_placeholder)
-question_entry.pack()
+question_entry.pack(fill="x", pady=10)
 
-# Frame para os botões
-button_frame = tk.Frame(window)
-button_frame.pack()
+answer_label = tk.Label(right_frame, text="Resposta:", font=("Arial", 12), bg=bg_color, fg=fg_color)
+answer_label.pack(anchor="w", pady=10)
 
-# Botões para enviar a pergunta
-ask_button1 = tk.Button(button_frame, text="Enviar novo arquivo para a base", command=upload_file)
-ask_button1.pack(side="left", padx=10)
+answer_text = scrolledtext.ScrolledText(right_frame, height=10, bg=entry_bg_color, fg=entry_fg_color)
+answer_text.pack(fill="x", pady=10)
 
-ask_button2 = tk.Button(button_frame, text="Procurar nas documentações", command=search_documentation)
-ask_button2.pack(side="left", padx=10)
+sources_label = tk.Label(right_frame, text="Fontes:", font=("Arial", 12), bg=bg_color, fg=fg_color)
+sources_label.pack(anchor="w", pady=10)
 
-ask_button3 = tk.Button(button_frame, text="Procurar no histórico de tickets", command=search_tickets)
-ask_button3.pack(side="left", padx=10)
+sources_text = scrolledtext.ScrolledText(right_frame, height=5, bg=entry_bg_color, fg=entry_fg_color)
+sources_text.pack(fill="x", pady=10)
 
-ask_button4 = tk.Button(button_frame, text="Procurar na internet")
-ask_button4.pack(side="left", padx=10)
-
-# Botão para "Pressione para Falar"
-speak_button = tk.Button(button_frame, text="Pressione para Falar", command=speak_to_text)
-speak_button.pack(side="left", padx=10)
-
-# Rótulo para exibir o caminho do arquivo selecionado
-file_path_label = tk.Label(window, text="")
-file_path_label.pack()
-
-# Área de exibição da resposta
-answer_label = tk.Label(window, text="Resposta:")
-answer_label.pack()
-answer_text = scrolledtext.ScrolledText(window, height=10)
-answer_text.pack()
-
-# Área de exibição das fontes
-sources_label = tk.Label(window, text="Fontes:")
-sources_label.pack()
-sources_text = scrolledtext.ScrolledText(window, height=5)
-sources_text.pack()
+file_path_label = tk.Label(right_frame, text="")
+file_path_label.pack(anchor='center', padx=10, pady=10)
 
 # Executar a janela principal
 window.mainloop()
