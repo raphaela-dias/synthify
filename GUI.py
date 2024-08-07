@@ -43,15 +43,6 @@ def search_documentation():
     sources_text.delete("1.0", tk.END)
     sources_text.insert(tk.END, result[1])
 
-# Função para fazer busca na internet
-def search_int():
-    question = question_entry.get("1.0", tk.END).strip()
-    result = search_internet(question)
-    answer_text.delete("1.0", tk.END)
-    answer_text.insert(tk.END, result[0])
-    sources_text.delete("1.0", tk.END)
-    sources_text.insert(tk.END, result[1])
-
 # Função para transcrever fala em texto
 def speak_to_text():
     question_entry.delete("1.0", tk.END)
