@@ -4,3 +4,4 @@ env
 /db_excel
 /db_docx
 __pycache__
+/database

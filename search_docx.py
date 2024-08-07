@@ -19,7 +19,7 @@ def search_docx(query):
 
     # Cria o LLM
     llm = ChatOpenAI(
-        openai_api_key= api_key,
+        openai_api_key=api_key,
         model_name='gpt-3.5-turbo',
         temperature=0.0
     )
@@ -37,6 +37,12 @@ def search_docx(query):
         embedding_function=embeddings
     )
 
+    # Verifique se há resultados relevantes
+    results = db_docx.similarity_search_with_relevance_scores(query, k=1)
+    if len(results) == 0 or results[0][1] < 0.7:
+        # Retorna mensagem indicando que não foram encontradas fontes
+        return "Não foram encontradas informações relevantes no banco de dados.", "Não foram encontradas fontes."
+
     # Criar uma cadeia de recuperação QA
     question_answering = ConversationalRetrievalChain.from_llm(
         llm,
@@ -49,10 +55,6 @@ def search_docx(query):
     result = answer['answer']
 
     # Mostra fonte utilizada para a resposta
-    results = db_docx.similarity_search_with_relevance_scores(query, k=1)
-    if len(results) == 0 or results[0][1] < 0.7:
-        sources = "Não foram encontradas fontes."
-    else:
-        sources = [doc.metadata.get("source", None) for doc, _score in results]
+    sources = [doc.metadata.get("source", None) for doc, _score in results]
 
     return result, sources

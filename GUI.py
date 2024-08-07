@@ -43,6 +43,15 @@ def search_documentation():
     sources_text.delete("1.0", tk.END)
     sources_text.insert(tk.END, result[1])
 
+# Função para fazer busca na internet
+def search_int():
+    question = question_entry.get("1.0", tk.END).strip()
+    result = search_internet(question)
+    answer_text.delete("1.0", tk.END)
+    answer_text.insert(tk.END, result[0])
+    sources_text.delete("1.0", tk.END)
+    sources_text.insert(tk.END, result[1])
+
 # Função para transcrever fala em texto
 def speak_to_text():
     question_entry.delete("1.0", tk.END)
@@ -108,9 +117,6 @@ ask_button1.pack(anchor='w', padx=10, pady=10)
 
 ask_button2 = create_button("Procurar no histórico de tickets", search_tickets)
 ask_button2.pack(anchor='w', padx=10, pady=10)
-
-ask_button3 = create_button("Procurar na internet", lambda: None)
-ask_button3.pack(anchor='w', padx=10, pady=10)
 
 speak_button = create_button("Pressione para falar", speak_to_text)
 speak_button.pack(anchor='w', padx=10, pady=10)
