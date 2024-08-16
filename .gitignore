@@ -1,5 +1,6 @@
 env
 *.env
+.venv
 /test
 /db_excel
 /db_docx
