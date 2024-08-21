@@ -7,3 +7,4 @@ SpeechRecognition==3.10.4
 Django==5.1
 PyAudio==0.2.14
 chromadb==0.4.24
+docx2txt==0.8

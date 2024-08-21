@@ -1,4 +1,8 @@
+import os
+from django.conf import settings
 from django.shortcuts import render
+from django.core.files.storage import FileSystemStorage
+from scripts.create_databases import upload_docx
 
 # Create your views here.
 
@@ -16,3 +20,25 @@ def openTickets(request):
 
 def sobre(request):
     return render(request, 'sobre.html')
+
+def upload_file(request):
+    if request.method == 'POST' and request.FILES['file']:
+        uploaded_file = request.FILES['file']
+        fs = FileSystemStorage()
+        
+        # Salva o arquivo em uma pasta temporária
+        file_name = fs.save(uploaded_file.name, uploaded_file)
+        file_path = fs.path(file_name)
+
+        # Verifica a extensão do arquivo e salva na pasta correta (embeddings)
+        if file_name.endswith('.docx'):
+            upload_docx(file_path)
+            destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_docx')
+        elif file_name.endswith('.xlsx'):
+            destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_excel')
+
+        # Move o arquivo para a pasta correta
+        os.makedirs(destination_dir, exist_ok=True)
+        os.rename(file_path, os.path.join(destination_dir, file_name))
+
+    return render(request, 'chat-synthify.html')

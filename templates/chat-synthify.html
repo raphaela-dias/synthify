@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinthify - Chat </title>
+    <title>Sinthify - Chat</title>
     <link rel="icon" href="{% static 'Logo2.png' %}" type="image/png">
     <script src="https://kit.fontawesome.com/98589b12b7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'chat-synthify.css' %}">
@@ -21,7 +21,7 @@
             </div>
             <nav class="menu">
                 <ul>
-                    <li class="btn"><a href="#"> <i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
+                    <li class="btn"><a href="#"><i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
                     <li class="btn"><a href="open_tickets.html"><i class="fa-solid fa-square-check"></i>Tickets abertos</a></li>
                     <li class="btn"><a href="chat-synthify.html"><img src="{% static 'sinthify-removebg.png' %}" alt="">Synthify</a></li>
                 </ul>
@@ -51,8 +51,15 @@
                 <div class="buttons">
                     <button>Buscar nas documentações</button>
                     <button>Buscar no histórico de tickets</button>
-                    <button>Enviar novo arquivo para a base</button>
+                    <button id="uploadBtn">Enviar novo arquivo para a base</button>
                 </div>
+
+                <!-- Formulário de Upload -->
+                <form id="uploadForm" method="POST" enctype="multipart/form-data" action="{% url 'upload_file' %}" style="display: none;">
+                    {% csrf_token %}
+                    <input type="file" name="file" id="fileInput" accept=".docx,.xlsx" onchange="this.form.submit()">
+                </form>
+
                 <div class="response-area">
                     <p>Resposta:</p>
                     <div class="response"></div>
@@ -62,5 +69,11 @@
             </section>
         </main>
     </div>
+
+    <script>
+        document.getElementById('uploadBtn').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+    </script>
 </body>
 </html>

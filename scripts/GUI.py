@@ -1,7 +1,7 @@
 from tkinter import scrolledtext, filedialog
-from create_databases import upload_excel, upload_docx
-from search_excel import search_excel
-from search_docx import search_docx
+from scripts.create_databases import upload_excel, upload_docx
+from scripts.search_excel import search_excel
+from scripts.search_docx import search_docx
 import tkinter as tk
 import speech_recognition as sr
 
