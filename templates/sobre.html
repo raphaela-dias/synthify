@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o Projeto - Synthify</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="{% static 'sobre.css' %}">
+    <link rel="icon" href="{% static 'Logo2.png' %}" type="image/png">
 </head>
 
 <body>
 
     <div class="header">
-        <img src="vector.png" alt="">
+        <img src="{% static 'vector.png' %}" alt="">
         <h1>Sobre a Synthify</h1>
     </div>
 
@@ -36,38 +39,38 @@
             </p>
         </div>
         <div class="content-image">
-            <img src="img.png" alt="Imagem do Projeto">
+            <img src="{% static 'img.png' %}" alt="Imagem do Projeto">
         </div>
     </div>
 
     <div class="team-section">
 
         <div class="team-member">
-            <img src='ingryd.png' alt="Ingryd">
+            <img src="{% static 'ingryd.png' %}" alt="Ingryd">
             <h3>Ingryd Shirlley</h3>
             <p>Designer e Front-end Engineer</p>
         </div>
 
         <div class="team-member">
-            <img src="mateus.jpg" alt="Mateus">
+            <img src="{% static 'mateus.jpg' %}" alt="Mateus">
             <h3>Mateus Arturo</h3>
             <p>Front-end Engineer</p>
         </div>
 
         <div class="team-member">
-            <img src="murillo.jpg" alt="Murillo">
+            <img src="{% static 'murillo.jpg' %}" alt="Murillo">
             <h3>Murillo Ribeiro</h3>
             <p>Front-end e Back-end Engineer</p>
         </div>
 
         <div class="team-member">
-            <img src="raphaela.jpg" alt="Raphaela">
+            <img src="{% static 'raphaela.jpg' %}" alt="Raphaela">
             <h3>Raphaela Longo</h3>
             <p>Back-end Engineer e Video Editor</p>
         </div>
 
         <div class="team-member">
-            <img src='sophia.jpg' alt="Sophia">
+            <img src="{% static 'sophia.jpg' %}" alt="Sophia">
             <h3>Sophia Ocireu</h3>
             <p>Front-end Engineer</p>
         </div>
