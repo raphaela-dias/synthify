@@ -11,6 +11,8 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 <h2>Como utilizar</h2>
 
 <b>Nota: É necessário ter uma API Key da OpenAI e uma Secret Key do Django</b>
+<br><b>Nota 2: O upload de arquivos funciona apenas com .xml e .xlsx</b>
+<br><b>Nota 3: O arquivo .xlsx obrigarotiamente deve conter as colunas 'Sintoma', 'Descrição' e 'Resolução'</b>
 
 1 - Instale o python==3.11.9
 <br>2 - Baixe os arquivos do projeto
