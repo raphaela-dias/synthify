@@ -1,29 +1,31 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="open_tickets.css">
-    <link rel="stylesheet" href="menu.css">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="{% static 'open_tickets.css' %}">
+    <link rel="stylesheet" href="{% static 'menu.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="Logo2.png" type="image/png">
+    <link rel="icon" href="{% static 'Logo2.png' %}" type="image/png">
     <title>Synthify - Open Tickets</title>
 </head>
 
 <body>
     <aside class="sidebar">
         <div class="logo">
-            <img src="logo-sofftek.png" alt="Softtek Logo">
+            <img src="{% static 'logo-sofftek.png' %}" alt="Softtek Logo">
         </div>
         <nav class="menu">
             <ul>
                 <li class="btn"><a href="#"> <i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
                 <li class="btn"><a href="open_tickets.html"><i class="fa-solid fa-square-check"></i>Tickets abertos</a></li>
-                <li class="btn"><a href="chat-synthify.html"><img src="sinthify-removebg.png" alt="">Synthify</a></li>
+                <li class="btn"><a href="chat-synthify.html"><img src="{% static 'sinthify-removebg.png' %}" alt="">Synthify</a></li>
             </ul>
         </nav>
     </aside>
@@ -36,7 +38,7 @@
                     <p>Bem vindo, <strong>João Pedro!</strong></p>
                 </div>
                 <div class="user-info">
-                    <img src="img-user.png" alt="Imagem do Usuário" id="img-user">
+                    <img src="{% static 'img-user.png' %}" alt="Imagem do Usuário" id="img-user">
                     <p>João Pedro</p>
                     <i class="fas fa-chevron-down"></i>
                 </div>
@@ -70,7 +72,7 @@
         <section class="tickets-list">
             <article class="ticket">
                 <header class="ticket-header">
-                    <img src="icon-yellow.png" alt="Ícone Amarelo">
+                    <img src="{% static 'icon-yellow.png' %}" alt="Ícone Amarelo">
                     <p>Ticket #2024-CS13</p>
                     <time>Postado às 12:45 AM</time>
                 </header>
@@ -80,7 +82,7 @@
                     <hr>
                 </div>
                 <footer class="ticket-footer">
-                    <img src="icon-people.png" alt="Ícone de Usuário">
+                    <img src="{% static 'icon-people.png' %}" alt="Ícone de Usuário">
                     <p>John Snow</p>
                     <a href="#">Abrir Ticket</a>
                 </footer>
@@ -88,7 +90,7 @@
 
             <article class="ticket">
                 <header class="ticket-header">
-                    <img src="icon-blue.png" alt="Ícone Amarelo">
+                    <img src="{% static 'icon-blue.png' %}" alt="Ícone Amarelo">
                     <p>Ticket #2024-CS13</p>
                     <time>Postado às 12:45 AM</time>
                 </header>
@@ -98,7 +100,7 @@
                     <hr>
                 </div>
                 <footer class="ticket-footer">
-                    <img src="icon-people.png" alt="Ícone de Usuário">
+                    <img src="{% static 'icon-people.png' %}" alt="Ícone de Usuário">
                     <p>John Snow</p>
                     <a href="#">Abrir Ticket</a>
                 </footer>
@@ -106,7 +108,7 @@
 
             <article class="ticket">
                 <header class="ticket-header">
-                    <img src="icon-green.png" alt="Ícone Amarelo">
+                    <img src="{% static 'icon-green.png' %}" alt="Ícone Amarelo">
                     <p>Ticket #2024-CS13</p>
                     <time>Postado às 12:45 AM</time>
                 </header>
@@ -116,7 +118,7 @@
                     <hr>
                 </div>
                 <footer class="ticket-footer">
-                    <img src="icon-people.png" alt="Ícone de Usuário">
+                    <img src="{% static 'icon-people.png' %}" alt="Ícone de Usuário">
                     <p>John Snow</p>
                     <a href="#">Abrir Ticket</a>
                 </footer>

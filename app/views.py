@@ -10,3 +10,6 @@ def loginPage(request):
 
 def chatsynthify(request):
     return render(request, 'chat-synthify.html')
+
+def openTickets(request):
+    return render(request, 'open_tickets.html')
