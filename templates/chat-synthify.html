@@ -1,27 +1,29 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinthify - Chat </title>
-    <link rel="icon" href="Logo2.png" type="image/png">
+    <link rel="icon" href="{% static 'Logo2.png' %}" type="image/png">
     <script src="https://kit.fontawesome.com/98589b12b7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="chat-synthify.css">
-    <link rel="stylesheet" href="menu.css">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="{% static 'chat-synthify.css' %}">
+    <link rel="stylesheet" href="{% static 'menu.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
 </head>
 
 <body>
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
-                <img src="logo-sofftek.png" alt="Softtek Logo">
+                <img src="{% static 'logo-sofftek.png' %}" alt="Softtek Logo">
             </div>
             <nav class="menu">
                 <ul>
                     <li class="btn"><a href="#"> <i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
                     <li class="btn"><a href="open_tickets.html"><i class="fa-solid fa-square-check"></i>Tickets abertos</a></li>
-                    <li class="btn"><a href="chat-synthify.html"><img src="sinthify-removebg.png" alt="">Synthify</a></li>
+                    <li class="btn"><a href="chat-synthify.html"><img src="{% static 'sinthify-removebg.png' %}" alt="">Synthify</a></li>
                 </ul>
             </nav>
         </aside>
@@ -34,7 +36,7 @@
                         <p>Bem vindo, <strong>João Pedro!</strong></p>
                     </div>
                     <div class="user-info">
-                        <img src="img-user.png" alt="Imagem do Usuário" id="img-user">
+                        <img src="{% static 'img-user.png' %}" alt="Imagem do Usuário" id="img-user">
                         <p>João Pedro</p>
                         <i class="fas fa-chevron-down"></i>
                     </div>

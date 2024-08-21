@@ -7,3 +7,6 @@ def index(request):
 
 def loginPage(request):
     return render(request, 'loginPage.html')
+
+def chatsynthify(request):
+    return render(request, 'chat-synthify.html')
