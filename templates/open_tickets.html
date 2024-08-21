@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="open_tickets.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="Logo2.png" type="image/png">
+    <title>Synthify - Open Tickets</title>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="logo-sofftek.png" alt="Softtek Logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li class="btn"><a href="#"> <i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
+                <li class="btn"><a href="open_tickets.html"><i class="fa-solid fa-square-check"></i>Tickets abertos</a></li>
+                <li class="btn"><a href="chat-synthify.html"><img src="sinthify-removebg.png" alt="">Synthify</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <section class="main-content">
+        <header class="header">
+            <div class="top-bar">
+                <div class="user-welcome">
+                    <i class="fas fa-bars"></i>
+                    <p>Bem vindo, <strong>João Pedro!</strong></p>
+                </div>
+                <div class="user-info">
+                    <img src="img-user.png" alt="Imagem do Usuário" id="img-user">
+                    <p>João Pedro</p>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="tickets-area">
+            <h3>Tickets Abertos</h3>
+            <div class="box">
+
+                <div class="search-box">
+                    <input type="search" class="search" placeholder="Buscar ticket">
+                </div>
+                <div class="select-group">
+                    <select id="ticket-priority" name="ticket-priority">
+                        <option value="" disabled selected>Selecione a Prioridade</option>
+                        <option value="new">Novos Tickets</option>
+                        <option value="ongoing">Tickets em Andamento</option>
+                        <option value="resolved">Tickets Resolvidos</option>
+                    </select>
+                    <select id="ticket-period" name="ticket-period">
+                        <option value="" disabled selected>Esta Semana</option>
+                        <option value="week1">Semana 1</option>
+                        <option value="week2">Semana 2</option>
+                        <option value="week3">Semana 3</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="tickets-list">
+            <article class="ticket">
+                <header class="ticket-header">
+                    <img src="icon-yellow.png" alt="Ícone Amarelo">
+                    <p>Ticket #2024-CS13</p>
+                    <time>Postado às 12:45 AM</time>
+                </header>
+                <div class="ticket-body">
+                    <h6>Como depositar dinheiro no meu portal?</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ex alias quis maiores.</p>
+                    <hr>
+                </div>
+                <footer class="ticket-footer">
+                    <img src="icon-people.png" alt="Ícone de Usuário">
+                    <p>John Snow</p>
+                    <a href="#">Abrir Ticket</a>
+                </footer>
+            </article>
+
+            <article class="ticket">
+                <header class="ticket-header">
+                    <img src="icon-blue.png" alt="Ícone Amarelo">
+                    <p>Ticket #2024-CS13</p>
+                    <time>Postado às 12:45 AM</time>
+                </header>
+                <div class="ticket-body">
+                    <h6>Como depositar dinheiro no meu portal?</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ex alias quis maiores.</p>
+                    <hr>
+                </div>
+                <footer class="ticket-footer">
+                    <img src="icon-people.png" alt="Ícone de Usuário">
+                    <p>John Snow</p>
+                    <a href="#">Abrir Ticket</a>
+                </footer>
+            </article>
+
+            <article class="ticket">
+                <header class="ticket-header">
+                    <img src="icon-green.png" alt="Ícone Amarelo">
+                    <p>Ticket #2024-CS13</p>
+                    <time>Postado às 12:45 AM</time>
+                </header>
+                <div class="ticket-body">
+                    <h6>Como depositar dinheiro no meu portal?</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ex alias quis maiores.</p>
+                    <hr>
+                </div>
+                <footer class="ticket-footer">
+                    <img src="icon-people.png" alt="Ícone de Usuário">
+                    <p>John Snow</p>
+                    <a href="#">Abrir Ticket</a>
+                </footer>
+            </article>
+        </section>
+    </section>
+</body>
+
+</html>

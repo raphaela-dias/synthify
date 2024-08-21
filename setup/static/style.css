@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Squada+One&display=swap');
+
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    
+}
+
+/* Header */
+
+.backgroundTop {
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100vw;
+    background-color: #3818D9;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+#textWelcome {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 8px;
+    font-family: Inter, sans-serif;
+    color: white;
+}
+
+.belowTextWelcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.topHeader {
+    display: flex;
+    align-items: center; 
+    margin-top: 30px;
+}
+
+#iconLogo {
+    display: flex;
+    align-items: center; 
+}
+
+#iconLogo img {
+    margin-right: 10px; 
+}
+
+#nameSynthify {
+    font-size: 15px;
+    color: #3818D9;
+    font-family: squada one;
+}
+
+#nameSynthify h1, #entrar h1 {
+    margin: 0; 
+    padding: 0; 
+}
+
+#entrar button {
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 40px;
+    font-weight: 140px;
+    cursor: pointer;
+    background-color: #EDEFF3;
+    border: none;
+    color: black;
+    font-family: "Inter";
+    outline: none;
+}
+
+#entrar button:hover {
+    background-color: #D1D3D8;
+}
+
+/* Main */
+
+#serviceManagement button {
+    padding: 5px 15px;
+    font-family: 'Inter', sans-serif;
+    background-color: #3818D9;
+    color: white;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    cursor: text;
+}
+
+.centerItens {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+    padding: 0 10px;
+}
+
+.leftItens {
+    margin-left: 100px; /* Margem direita para criar espaço entre leftItens e rightItens */
+}
+
+#imgMan img {
+    width: 80%;
+    height: 80%;
+}
+
+#title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+#subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #48626F;
+    line-height: 2;
+}
+
+.leftItens button {
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    color: white;
+    background-color: #3818D9;
+    padding: 10px 26px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.leftItens button:hover {
+    background-color: #5034db;
+}
+
+/* BelowMain */
+
+.groupBelowMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+#videosTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+#videosSubtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #48626F;
+    
+}
+
+#videosSubtitle h2{
+    font-weight: 350;
+}
+
+#videosTitle, #videosSubtitle {
+    margin: 0; 
+    padding: 0; 
+}
+
+.groupVideos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    padding: 0px 350px; 
+
+}
+
+.video h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px
+}
+
+.backgroundVideos {
+    display: flex;
+    background-color: #eae8f3; 
+    border: 65px; 
+    border-radius: 20px; 
+    width: 350px;
+    height: 350px; 
+    text-align: center;
+    justify-content: center;
+}
+
+footer {
+    margin-bottom: 50px; 
+}
+
+.video {
+    margin-top: 15px;
+}
+
+.video button {
+    font-family: 'Inter', sans-serif;
+    border-radius: 5px;
+    color: white;
+    background-color: #3818D9;
+    padding: 10px 26px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.video button:hover {
+    background-color: #5034db;
+}
+
+/* Responsividade 1920px */
+
+@media (min-width: 1920px) and (max-width: 1920px) {
+    
+    #iconLogo img {
+        margin-right: 10px; 
+        width: 50px;
+        height: 50px;
+    }
+    
+    #nameSynthify {
+        font-size: 20px;
+    }
+
+    #serviceManagement button {
+        padding: 7px 20px;
+    }
+
+    .centerItens {
+        padding: 0 100px;
+    }
+
+    #imgMan img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .leftItens {
+        margin-left: 125px; 
+    }
+
+    #title {
+        font-size: 18px;
+    }
+    
+    #subtitle {
+        font-size: 12px;
+
+    }
+
+    .leftItens button {
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 12px 30px;
+    }
+
+    #videosTitle {
+        font-size: 18px;
+    }
+
+    .groupBelowMain {
+        margin-top: 50px;
+        gap: 0;
+    }
+
+    .backgroundVideos {
+        display: flex;
+        background-color: #eae8f3; 
+        border: 65px; 
+        border-radius: 20px; 
+        width: 400px;
+        height: 400px; 
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1366px) {
+
+    #textWelcome {
+        font-size: 7px;
+    }
+    
+    #iconLogo img {
+        margin-right: 10px; 
+        width: 40px;
+        height: 40px;
+    }
+    
+    #nameSynthify {
+        font-size: 15px;
+    }
+
+    #serviceManagement button {
+        padding: 5px 15px;
+    }
+
+    #imgMan img {
+        width: 75%;
+        height: 75%;
+        transform: translateX(90px);
+    }
+
+    .leftItens {
+        margin-left: 80px; 
+    }
+
+    #title {
+        font-size: 15px;
+    }
+    
+    #subtitle {
+        font-size: 10px;
+
+    }
+
+    .leftItens button {
+        font-size: 12px;
+        border-radius: 5px;
+        padding: 10px 25px;
+    }
+
+    #videosTitle {
+        font-size: 15px;
+    }
+
+    .groupBelowMain {
+        margin-top: 50px;
+        gap: 0;
+    }
+
+    #videosSubtitle {
+        font-size: 12px;
+    }
+
+    .groupVideos {
+        margin-top: 45px;
+        padding: 0px 220px; 
+    
+    }
+
+    .backgroundVideos {
+        display: flex;
+        background-color: #eae8f3; 
+        border: 65px; 
+        border-radius: 20px; 
+        width: 350px;
+        height: 350px; 
+        text-align: center;
+        justify-content: center;
+    }
+
+    .centerItens {
+        margin-top: 65px;
+    }
+    
+}

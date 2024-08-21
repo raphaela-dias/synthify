@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinthify - Chat </title>
+    <link rel="icon" href="Logo2.png" type="image/png">
+    <script src="https://kit.fontawesome.com/98589b12b7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="chat-synthify.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo-sofftek.png" alt="Softtek Logo">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="btn"><a href="#"> <i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
+                    <li class="btn"><a href="open_tickets.html"><i class="fa-solid fa-square-check"></i>Tickets abertos</a></li>
+                    <li class="btn"><a href="chat-synthify.html"><img src="sinthify-removebg.png" alt="">Synthify</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header class="header">
+                <div class="top-bar">
+                    <div class="user-welcome">
+                        <i class="fa-solid fa-bars"></i>
+                        <p>Bem vindo, <strong>João Pedro!</strong></p>
+                    </div>
+                    <div class="user-info">
+                        <img src="img-user.png" alt="Imagem do Usuário" id="img-user">
+                        <p>João Pedro</p>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <section class="sinthify">
+                <div class="input-area">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" placeholder="Digite sua pergunta:">
+                </div>
+                <div class="buttons">
+                    <button>Buscar nas documentações</button>
+                    <button>Buscar no histórico de tickets</button>
+                    <button>Enviar novo arquivo para a base</button>
+                </div>
+                <div class="response-area">
+                    <p>Resposta:</p>
+                    <div class="response"></div>
+                    <p>Fonte:</p>
+                    <div class="source"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
