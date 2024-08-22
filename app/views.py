@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from scripts.create_databases import upload_docx, upload_excel
 from scripts.search_docx import search_docx
+from scripts.search_excel import search_excel
 from django.http import JsonResponse
 import json
 import os
@@ -47,7 +48,6 @@ def upload_file(request):
 
     return render(request, 'chat-synthify.html')
 
-
 def search_docs(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -55,6 +55,17 @@ def search_docs(request):
 
         # Função de busca
         response, sources = search_docx(question)
+
+        return JsonResponse({'response': response, 'sources': sources})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+
+def search_tickets(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        question = data.get('question', '')
+
+        # Função de busca
+        response, sources = search_excel(question)
 
         return JsonResponse({'response': response, 'sources': sources})
     return JsonResponse({'error': 'Invalid request'}, status=400)

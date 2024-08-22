@@ -50,7 +50,7 @@
                 </div>
                 <div class="buttons">
                     <button id="searchDocsBtn">Buscar nas documentações</button>
-                    <button>Buscar no histórico de tickets</button>
+                    <button id="searchTicketsBtn">Buscar no histórico de tickets</button>
                     <button id="uploadBtn">Enviar novo arquivo para a base</button>
                 </div>
 
@@ -93,7 +93,25 @@
             })
             .catch(error => console.error('Error:', error));
         });
+
+        document.getElementById('searchTicketsBtn').addEventListener('click', function() {
+            const query = document.getElementById('questionInput').value;
+
+            fetch("{% url 'search_tickets' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ question: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseText').innerText = data.response;
+                document.getElementById('sourceText').innerText = data.sources.join(", ");
+            })
+            .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
 </html>
-
