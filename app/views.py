@@ -1,8 +1,8 @@
-import os
 from django.conf import settings
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
-from scripts.create_databases import upload_docx
+from scripts.create_databases import upload_docx, upload_excel
+import os
 
 # Create your views here.
 
@@ -35,6 +35,7 @@ def upload_file(request):
             upload_docx(file_path)
             destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_docx')
         elif file_name.endswith('.xlsx'):
+            upload_excel(file_path)
             destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_excel')
 
         # Move o arquivo para a pasta correta

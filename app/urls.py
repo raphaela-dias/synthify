@@ -7,5 +7,5 @@ urlpatterns = [
         path('chat-synthify.html', chatsynthify),
         path('open_tickets.html', openTickets),
         path('sobre.html', sobre),
-        path('upload/', upload_file, name='upload_file'),
+        path('chat-synthify.html/file_uploaded/', upload_file, name='upload_file'),
         ]
