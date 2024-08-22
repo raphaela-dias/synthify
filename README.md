@@ -14,13 +14,14 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 <br><b>Nota 2: O upload de arquivos funciona apenas com .xml e .xlsx</b>
 <br><b>Nota 3: O arquivo .xlsx obrigatoriamente deve conter as colunas 'Sintoma', 'Descrição' e 'Resolução'</b>
 
-1 - Instale o python==3.11.9
-<br>2 - Baixe os arquivos do projeto
-<br>3 - Abra o projeto no VSCode
-<br>4 - Crie uma .venv
-<br>5 - Instale as dependências que estão em requirements.txt na .venv
-<br>6 - Crie um arquivo .env e insira as chaves nas variáveis OPENAI_API_KEY e SECRET_KEY
-<br>7 - Rode o comando 'python manage.py runserver' no terminal
-<br>8 - Ctrl + click no servidor local
+1. Instale o python==3.11.9
+2. Baixe os arquivos do projeto
+3. Abra o projeto no VSCode
+4. Crie uma .venv `python3.11 -m venv .venv`
+5. Ative a .venv `.venv/Scripts/Activate` (Windows) `nome_do_ambiente/bin/activate` (MacOS/Linux)
+6. Instale as dependências que estão em requirements.txt na .venv
+7. Na raiz do projeto, crie um arquivo .env e insira as chaves nas variáveis OPENAI_API_KEY e SECRET_KEY como strings
+8. Rode o comando `python manage.py runserver` no terminal
+9. Ctrl + click no servidor local
  
  
