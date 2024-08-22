@@ -46,10 +46,10 @@
             <section class="sinthify">
                 <div class="input-area">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" placeholder="Digite sua pergunta:">
+                    <input type="search" id="questionInput" placeholder="Digite sua pergunta:">
                 </div>
                 <div class="buttons">
-                    <button>Buscar nas documentações</button>
+                    <button id="searchDocsBtn">Buscar nas documentações</button>
                     <button>Buscar no histórico de tickets</button>
                     <button id="uploadBtn">Enviar novo arquivo para a base</button>
                 </div>
@@ -62,9 +62,9 @@
 
                 <div class="response-area">
                     <p>Resposta:</p>
-                    <div class="response"></div>
+                    <div class="response" id="responseText"></div>
                     <p>Fonte:</p>
-                    <div class="source"></div>
+                    <div class="source" id="sourceText"></div>
                 </div>
             </section>
         </main>
@@ -74,6 +74,26 @@
         document.getElementById('uploadBtn').addEventListener('click', function() {
             document.getElementById('fileInput').click();
         });
+
+        document.getElementById('searchDocsBtn').addEventListener('click', function() {
+            const query = document.getElementById('questionInput').value;
+
+            fetch("{% url 'search_docs' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ question: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseText').innerText = data.response;
+                document.getElementById('sourceText').innerText = data.sources.join(", ");
+            })
+            .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
 </html>
+

@@ -2,6 +2,9 @@ from django.conf import settings
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from scripts.create_databases import upload_docx, upload_excel
+from scripts.search_docx import search_docx
+from django.http import JsonResponse
+import json
 import os
 
 # Create your views here.
@@ -43,3 +46,15 @@ def upload_file(request):
         os.rename(file_path, os.path.join(destination_dir, file_name))
 
     return render(request, 'chat-synthify.html')
+
+
+def search_docs(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        question = data.get('question', '')
+
+        # Função de busca
+        response, sources = search_docx(question)
+
+        return JsonResponse({'response': response, 'sources': sources})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
