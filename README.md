@@ -28,7 +28,7 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 
 7. Aplique as migrações com o comando `python manage.py migrate`
 
-8. Na raiz do projeto, crie um arquivo .env e insira as chaves nas variáveis `OPENAI_API_KEY=`'sua_chave_openai_aqui' e `SECRET_KEY=` 'sua_chave_secreta_aqui' como strings
+8. Na raiz do projeto, crie um arquivo .env e insira as chaves nas variáveis `OPENAI_API_KEY=`'sua_chave_openai_aqui' e `SECRET_KEY=`'sua_chave_secreta_aqui' como strings
 
 9. Execute o comando `python manage.py runserver` no terminal
 
