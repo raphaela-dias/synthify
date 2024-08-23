@@ -2,369 +2,216 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Squada+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Squada+One&display=swap');
 
-
-body, html {
-    width: 100%;
-    height: 100%;
+* {
     margin: 0;
     padding: 0;
-    overflow: auto;
-    
+    box-sizing: border-box;
 }
 
-/* Header */
+body {
+    font-family: "Inter";
+    line-height: 1.6;
+}
 
-.backgroundTop {
+.top-bar {
+    background-color: #3818D9;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.navbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 8rem;
+    background-color: white;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    font-size: 25px;
+    font-family: Squada One;
+    font-weight: 600;
+    color: #3818D9;
+}
+
+.logo img {
+    max-height: 40px;
+}
+
+.login-btn {
+    padding: .3rem 1.3rem;
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: #fff;
+    color: #3818D9;
+    font-weight: 700;
+    transition: all .5s ease;
+    border: 2px solid #3818D9;
+}
+
+.login-btn:hover {
+    background-color: #3818D9;
+    color: #fff;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 8rem;
+    background-color: rgba(127, 86, 216, 0.1);
+}
+
+.hero-text {
+    max-width: 650px;
+    margin-bottom: 20px;
+}
+
+.hero-text .tag {
+    display: inline-block;
+    background-color: #3818D9;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.hero p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #3818D9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #492cda;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.videos {
+    padding: 1rem 8rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.videos h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.videos p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.video-card {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-card p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 10px;
+}
+
+.video-embed iframe {
+    position: absolute;
     top: 0;
     left: 0;
-    height: 60px;
-    width: 100vw;
-    background-color: #3818D9;
-    box-sizing: border-box;
-    max-width: 100%;
-}
-
-#textWelcome {
-    text-align: center;
-    justify-content: center;
-    display: flex;
     width: 100%;
-    align-items: center;
-    font-size: 8px;
-    font-family: Inter, sans-serif;
-    color: white;
+    height: 100%;
+    border-radius: 10px;
 }
 
-.belowTextWelcome {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px;
-}
-
-.topHeader {
-    display: flex;
-    align-items: center; 
-    margin-top: 30px;
-}
-
-#iconLogo {
-    display: flex;
-    align-items: center; 
-}
-
-#iconLogo img {
-    margin-right: 10px; 
-}
-
-#nameSynthify {
-    font-size: 15px;
-    color: #3818D9;
-    font-family: squada one;
-}
-
-#nameSynthify h1, #entrar h1 {
-    margin: 0; 
-    padding: 0; 
-}
-
-#entrar button {
-    padding: 10px 15px;
-    font-size: 15px;
-    border-radius: 40px;
-    font-weight: 140px;
-    cursor: pointer;
-    background-color: #EDEFF3;
-    border: none;
-    color: black;
-    font-family: "Inter";
-    outline: none;
-}
-
-#entrar button:hover {
-    background-color: #D1D3D8;
-}
-
-/* Main */
-
-#serviceManagement button {
-    padding: 5px 15px;
-    font-family: 'Inter', sans-serif;
-    background-color: #3818D9;
-    color: white;
-    border-radius: 50px;
-    outline: none;
-    border: none;
-    cursor: text;
-}
-
-.centerItens {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 70px;
-    padding: 0 10px;
-}
-
-.leftItens {
-    margin-left: 100px; /* Margem direita para criar espaço entre leftItens e rightItens */
-}
-
-#imgMan img {
-    width: 80%;
-    height: 80%;
-}
-
-#title {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-}
-
-#subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    color: #48626F;
-    line-height: 2;
-}
-
-.leftItens button {
-    font-family: 'Inter', sans-serif;
-    border-radius: 5px;
-    color: white;
-    background-color: #3818D9;
-    padding: 10px 26px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.leftItens button:hover {
-    background-color: #5034db;
-}
-
-/* BelowMain */
-
-.groupBelowMain {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 50px;
-}
-
-#videosTitle {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-}
-
-#videosSubtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: #48626F;
-    
-}
-
-#videosSubtitle h2{
-    font-weight: 350;
-}
-
-#videosTitle, #videosSubtitle {
-    margin: 0; 
-    padding: 0; 
-}
-
-.groupVideos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 60px;
-    padding: 0px 350px; 
-
-}
-
-.video h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 25px
-}
-
-.backgroundVideos {
-    display: flex;
-    background-color: #eae8f3; 
-    border: 65px; 
-    border-radius: 20px; 
-    width: 350px;
-    height: 350px; 
-    text-align: center;
-    justify-content: center;
-}
-
-footer {
-    margin-bottom: 50px; 
-}
-
-.video {
-    margin-top: 15px;
-}
-
-.video button {
-    font-family: 'Inter', sans-serif;
-    border-radius: 5px;
-    color: white;
-    background-color: #3818D9;
-    padding: 10px 26px;
-    border: none;
-    cursor: pointer;
-    margin-top: 25px;
-}
-
-.video button:hover {
-    background-color: #5034db;
-}
-
-/* Responsividade 1920px */
-
-@media (min-width: 1920px) and (max-width: 1920px) {
-    
-    #iconLogo img {
-        margin-right: 10px; 
-        width: 50px;
-        height: 50px;
-    }
-    
-    #nameSynthify {
-        font-size: 20px;
+@media (min-width: 768px) {
+    .video-card {
+        padding: 8px;
     }
 
-    #serviceManagement button {
-        padding: 7px 20px;
-    }
-
-    .centerItens {
-        padding: 0 100px;
-    }
-
-    #imgMan img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .leftItens {
-        margin-left: 125px; 
-    }
-
-    #title {
-        font-size: 18px;
-    }
-    
-    #subtitle {
-        font-size: 12px;
-
-    }
-
-    .leftItens button {
-        font-size: 14px;
-        border-radius: 5px;
-        padding: 12px 30px;
-    }
-
-    #videosTitle {
-        font-size: 18px;
-    }
-
-    .groupBelowMain {
-        margin-top: 50px;
-        gap: 0;
-    }
-
-    .backgroundVideos {
-        display: flex;
-        background-color: #eae8f3; 
-        border: 65px; 
-        border-radius: 20px; 
-        width: 400px;
-        height: 400px; 
-        text-align: center;
-        justify-content: center;
+    .video-card p {
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 1366px) {
-
-    #textWelcome {
-        font-size: 7px;
-    }
-    
-    #iconLogo img {
-        margin-right: 10px; 
-        width: 40px;
-        height: 40px;
-    }
-    
-    #nameSynthify {
-        font-size: 15px;
+@media (max-width: 480px) {
+    .video-card {
+        padding: 6px;
     }
 
-    #serviceManagement button {
-        padding: 5px 15px;
+    .video-card p {
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 1rem 5rem;
     }
 
-    #imgMan img {
-        width: 75%;
-        height: 75%;
-        transform: translateX(90px);
+    .hero-text {
+        margin-right: 20px;
     }
 
-    .leftItens {
-        margin-left: 80px; 
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    #title {
-        font-size: 15px;
-    }
-    
-    #subtitle {
-        font-size: 10px;
-
+    .navbar {
+        padding: 1rem 5rem;
     }
 
-    .leftItens button {
-        font-size: 12px;
-        border-radius: 5px;
-        padding: 10px 25px;
-    }
-
-    #videosTitle {
-        font-size: 15px;
-    }
-
-    .groupBelowMain {
-        margin-top: 50px;
-        gap: 0;
-    }
-
-    #videosSubtitle {
-        font-size: 12px;
-    }
-
-    .groupVideos {
-        margin-top: 45px;
-        padding: 0px 220px; 
-    
-    }
-
-    .backgroundVideos {
-        display: flex;
-        background-color: #eae8f3; 
-        border: 65px; 
-        border-radius: 20px; 
-        width: 350px;
-        height: 350px; 
-        text-align: center;
-        justify-content: center;
-    }
-
-    .centerItens {
-        margin-top: 65px;
+    .videos {
+        padding: 1rem 5rem;
     }
     
 }
