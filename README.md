@@ -17,11 +17,12 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 1. Instale o python==3.11.9
 2. Baixe os arquivos do projeto
 3. Abra o projeto no VSCode
-4. Crie uma .venv `python3.11 -m venv .venv`
-5. Ative a .venv `.venv/Scripts/Activate` (Windows) `nome_do_ambiente/bin/activate` (MacOS/Linux)
+4. Crie um ambiente virtual '.venv' com 'python3.11 -m venv .venv' no terminal ou use a barra de pesquisa do VS Code para configurar o ambiente ao abrir um arquivo Python
+5. Ative o ambiente virtual com o comando `.venv/Scripts/Activate` (Windows) `nome_do_ambiente/bin/activate` (MacOS/Linux)
 6. Instale as dependências que estão em requirements.txt na .venv
-7. Na raiz do projeto, crie um arquivo .env e insira as chaves nas variáveis OPENAI_API_KEY e SECRET_KEY como strings
-8. Rode o comando `python manage.py runserver` no terminal
-9. Ctrl + click no servidor local
+7. Aplique as migrações com o comando 'python manage.py migrate'
+8. Na raiz do projeto, crie um arquivo .env e insira as chaves nas variáveis OPENAI_API_KEY="sua_chave_openai_aqui" e SECRET_KEY = 'sua_chave_secreta_aqui' como strings
+9. Execute o comando `python manage.py runserver` no terminal
+10. Selecione as teclas Ctrl + click no link do servidor local
  
  
