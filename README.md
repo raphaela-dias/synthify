@@ -20,7 +20,7 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 
 3. Abra o projeto no VSCode
 
-4. Crie um ambiente virtual `.venv` com `python3.11 -m venv .venv` no terminal ou use a barra de pesquisa do VS Code para configurar o ambiente ao abrir um arquivo Python
+4. Crie um ambiente virtual `.venv` com `python3 -m venv .venv` no terminal ou use a barra de pesquisa do VS Code para configurar o ambiente ao abrir um arquivo Python
 
 5. Ative o ambiente virtual com o comando `.venv/Scripts/Activate` (Windows) `source .venv/bin/activate` (MacOS/Linux)
 
