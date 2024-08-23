@@ -24,7 +24,7 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 
 5. Ative o ambiente virtual com o comando `.venv/Scripts/Activate` (Windows) `nome_do_ambiente/bin/activate` (MacOS/Linux)
 
-6. Instale as dependências que estão em requirements.txt na .venv
+6. Instale as dependências que estão em `requirements.txt` na `.venv`
 
 7. Aplique as migrações com o comando `python manage.py migrate`
 
