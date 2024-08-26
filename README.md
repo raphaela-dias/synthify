@@ -14,7 +14,7 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 <br><b>Nota 2: O upload de arquivos funciona apenas com .docx e .xlsx</b>
 <br><b>Nota 3: O arquivo .xlsx obrigatoriamente deve conter as colunas 'Sintoma', 'Descrição' e 'Resolução'</b>
 
-1. Instale o Python 3.11.9
+1. Instale o Python 3.11.9 e virtualenv 20.26.2
 
 2. Baixe os arquivos do projeto
 
