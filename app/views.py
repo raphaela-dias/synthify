@@ -22,6 +22,9 @@ def chatsynthify(request):
 def openTickets(request):
     return render(request, 'open_tickets.html')
 
+def myTickets(request):
+    return render(request, 'my_tickets.html')
+
 def sobre(request):
     return render(request, 'sobre.html')
 

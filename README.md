@@ -22,7 +22,7 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 
 4. Crie um ambiente virtual `.venv` com `python3 -m venv .venv` no terminal ou use a barra de pesquisa do VS Code para configurar o ambiente ao abrir um arquivo Python
 
-5. Ative o ambiente virtual com o comando `.venv/Scripts/Activate` (Windows) `source .venv/bin/activate` (MacOS/Linux)
+5. Ative o ambiente virtual com o comando `.venv/Scripts/activate` (Windows) `source .venv/bin/activate` (MacOS/Linux)
 
 6. Instale as dependências que estão em `requirements.txt` na `.venv`
 
@@ -32,6 +32,6 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 
 9. Execute o comando `python manage.py runserver` no terminal
 
-10. Selecione as teclas Ctrl + click no link do servidor local
+10. Selecione a tecla Ctrl + click no link do servidor local
  
  
