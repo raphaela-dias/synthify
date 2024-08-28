@@ -1,0 +1,87 @@
+.sidebar {
+    width: 15vw;
+    background-color: #fff;
+    color: #000;
+    position: fixed;
+    border-right: 1px solid #ddddddc8;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.sidebar .menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .menu ul li {
+    padding: 15px;
+    padding-left: 30px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease
+}
+
+.sidebar .menu ul li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sidebar .menu ul li a i{
+    font-size: 20px;
+}
+
+.sidebar .menu ul li a img{
+   height: 25px;
+}
+
+.sidebar .menu ul li:hover {
+    background-color: rgba(127, 86, 216, 0.1);
+}
+
+.sidebar .menu ul li:hover a {
+    color: #5a67d8; 
+}
+
+.sair{
+    background-color: rgba(127, 86, 216, 0.1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: .5rem;
+    list-style: none;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.6s ease
+}
+
+.sair a{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sair:hover {
+    background-color: #5a67d8;
+}
+
+.sair:hover a {
+    color: #fff; 
+}
