@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'my_tickets.css' %}">
+    <link rel="stylesheet" href="{% static 'menu.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="icon" href="{% static 'Logo2.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Meus tickets</title>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="{% static 'logo-sofftek.png' %}" alt="Softtek Logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li class="btn"><a href="my_tickets.html"> <i class="fa-solid fa-ticket"></i>Meus Tickets</a></li>
+                <li class="btn"><a href="open_tickets.html"><i class="fa-solid fa-square-check"></i>Tickets abertos</a></li>
+                <li class="btn"><a href="chat-synthify.html"><img src="{% static 'sinthify-removebg.png' %}" alt="">Synthify</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sair">
+            <li class="btn"><a href="loginPage.html"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</a></li>
+        </div>
+    </aside>
+
+    <section class="main-content">
+        <header class="header">
+            <div class="top-bar">
+                <div class="user-welcome">
+                    <i class="fas fa-bars"></i>
+                    <p>Bem vindo, <strong>João Pedro!</strong></p>
+                </div>
+                <div class="user-info">
+                    <img src="{% static 'img-user.png' %}" alt="Imagem do Usuário" id="img-user">
+                    <p>João Pedro</p>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="tickets-area">
+            <h3>Meus Tickets</h3>
+            <div class="box">
+                <div class="ticket-info">
+                    <p class="ticket-number">Ticket# 2023-CS123</p>
+                    <h4>Como depositar dinheiro no portal?</h4>
+                    <p class="ticket-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
+                        sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+                        ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit.
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
+                        sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                    </p>
+                    <span class="posted-time">Postado às 12:45</span>
+                </div>
+
+                <section class="reply-ticket">
+                    <h4>Responder ao Ticket</h4>
+                    <form action="#">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-email">E-mail do Cliente</label>
+                                <input type="email" id="customer-email" name="customer-email" value="xsasyd@gmail.com" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="request-type">Tipo de Solicitação</label>
+                                <select id="request-type" name="request-type">
+                                    <option value="deposit-issue">Problema de Depósito</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select id="status" name="status">
+                                    <option value="on-going">Em Andamento</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticket-body">Corpo do Ticket</label>
+                            <textarea id="ticket-body" name="ticket-body" placeholder="Digite o problema do ticket aqui.."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar Resposta</button>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>

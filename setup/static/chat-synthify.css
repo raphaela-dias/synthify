@@ -37,6 +37,11 @@
     padding: 20px;
 }
 
+.img_logo{
+    width: 60px;
+    align-self: center;
+}
+
 .input-area{
     border-radius: 5px;
     display: flex;
@@ -101,4 +106,10 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
+}
+
+@media (width: 1366px) {
+    .buttons {
+        margin: 5%;
+    }
 }

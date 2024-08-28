@@ -54,3 +54,34 @@
 .sidebar .menu ul li:hover a {
     color: #5a67d8; 
 }
+
+.sair{
+    background-color: rgba(127, 86, 216, 0.1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: .5rem;
+    list-style: none;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.6s ease
+}
+
+.sair a{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sair:hover {
+    background-color: #5a67d8;
+}
+
+.sair:hover a {
+    color: #fff; 
+}

@@ -22,16 +22,16 @@ Assim, proporcionamos soluções  mais eficientes, precisas e adaptadas às nece
 
 4. Crie um ambiente virtual `.venv` com `python3 -m venv .venv` no terminal ou use a barra de pesquisa do VS Code para configurar o ambiente ao abrir um arquivo Python
 
-5. Ative o ambiente virtual com o comando `.venv/Scripts/Activate` (Windows) `source .venv/bin/activate` (MacOS/Linux)
+5. Ative o ambiente virtual com o comando `.venv/Scripts/activate` (Windows) `source .venv/bin/activate` (MacOS/Linux)
 
 6. Instale as dependências que estão em `requirements.txt` na `.venv`
 
 7. Aplique as migrações com o comando `python manage.py migrate`
 
-8. Na raiz do projeto, crie um arquivo .env e insira as chaves nas variáveis `OPENAI_API_KEY=`'sua_chave_openai_aqui' e `SECRET_KEY=`'sua_chave_secreta_aqui' como strings
+8. Na raiz do projeto, crie um arquivo .env e adicione as variáveis `OPENAI_API_KEY='sua_chave_openai_aqui'` e `SECRET_KEY='sua_chave_secreta_aqui'`. Para gerar a chave secreta, ative a .venv e execute `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'` no console. Se ocorrer algum erro, insira a chave diretamente no `settings.py`.
 
 9. Execute o comando `python manage.py runserver` no terminal
 
-10. Selecione as teclas Ctrl + click no link do servidor local
+10. Selecione a tecla Ctrl + click no link do servidor local
  
  
