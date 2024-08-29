@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 import pandas as pd
 import os
 
-# Carrega API key
-load_dotenv()
-api_key = os.environ.get("OPENAI_API_KEY")
-
 def upload_excel(file_path):
+    # Carrega API key
+    load_dotenv()
+    api_key = os.environ.get("OPENAI_API_KEY")
+
     # Carrega o arquivo .excel
     df = pd.read_excel(file_path)
 
@@ -47,6 +47,10 @@ def upload_excel(file_path):
 
 
 def upload_docx(file_path):
+    # Carrega API key
+    load_dotenv()
+    api_key = os.environ.get("OPENAI_API_KEY")
+
     #Lista de chunks
     documents = []
 
