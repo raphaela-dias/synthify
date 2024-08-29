@@ -6,11 +6,11 @@ from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 
-# Loading api key
-load_dotenv()
-api_key = os.environ.get("OPENAI_API_KEY")
-
 def search_docx(query):
+    # Loading api key
+    load_dotenv()
+    api_key = os.environ.get("OPENAI_API_KEY")
+
     # Criar embeddings usando OpenAI
     embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 

@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 import ast
 import os
 
-# Carrega a API key
-load_dotenv()
-api_key = os.environ.get("OPENAI_API_KEY")
-
 def search_excel(query):
+    # Carrega a API key
+    load_dotenv()
+    api_key = os.environ.get("OPENAI_API_KEY")
+
     # Criar embeddings usando OpenAI
     embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
