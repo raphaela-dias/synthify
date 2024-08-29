@@ -95,10 +95,12 @@
 
 .response{
     height: 250px;
+    overflow: scroll;
 }
 
 .source{
     height: 90px;
+    overflow: scroll;
 }
 
 .response, .source {

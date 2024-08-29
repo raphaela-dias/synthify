@@ -92,8 +92,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('responseText').innerText = data.response;
-                document.getElementById('sourceText').innerText = data.sources.join(", ");
+                const response = data.response;
+                const source = data.sources.join(", ");
+                document.getElementById('responseText').innerText = response;
+                document.getElementById('sourceText').innerText = source;
             })
             .catch(error => console.error('Error:', error));
         });
@@ -111,8 +113,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('responseText').innerText = data.response;
-                document.getElementById('sourceText').innerText = data.sources.join(", ");
+                const response = data.response;
+                const source = data.sources.join(", ");
+                document.getElementById('responseText').innerText = response;
+                document.getElementById('sourceText').innerText = source;
             })
             .catch(error => console.error('Error:', error));
         });
