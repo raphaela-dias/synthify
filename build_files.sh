@@ -1,9 +1,10 @@
-echo "Building project packages..."
-python3 -m pip install -r requirements.txt
+#!/bin/bash
 
-echo "Migrating Database..."
-python3 manage.py makemigrations -noinput
-python3 manage.py migrate -noinput
+# Instalar dependências
+pip install -r requirements.txt
 
-echo "Colecting static files..."
-python3 manage.py collectstatic --noinput
+# Executar migrações
+python manage.py migrate
+
+# Coletar arquivos estáticos
+python manage.py collectstatic --noinput
