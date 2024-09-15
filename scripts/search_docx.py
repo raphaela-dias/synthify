@@ -55,6 +55,10 @@ def search_docx(query):
     result = answer['answer']
 
     # Mostra fonte utilizada para a resposta
-    sources = [doc.metadata.get("source", None) for doc, _score in results]
+    sources = []
+    for doc, _score in results:
+        source_with_path = doc.metadata.get("source", "Fonte desconhecida")
+        filename = os.path.basename(source_with_path) 
+        sources.append(filename)
 
     return result, sources

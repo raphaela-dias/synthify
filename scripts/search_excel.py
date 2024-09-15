@@ -52,13 +52,15 @@ def search_excel(query):
     )
 
     # Mostra resposta
-    answer = question_answering.invoke({"question": "Answer in brazilian portuguese and only with information that is in the documents provided." + query})
+    answer = question_answering.invoke({"question": "You are a helpful help desk agent. Answer in brazilian portuguese and only with information that is in the documents provided." + query})
     result = answer['answer']
 
     # Mostra fonte utilizada para a resposta
     sources = []
     for doc, _score in results:
-        metadata = ast.literal_eval(doc.page_content.split(" - ")[-1])  # Extrai o metadata
-        sources.append(metadata.get("filename", "Fonte desconhecida"))  # Acessa o filename
+        metadata = ast.literal_eval(doc.page_content.split(" - ")[-1])
+        filename_with_path = metadata.get("filename", "Fonte desconhecida")
+        filename = os.path.basename(filename_with_path)
+        sources.append(filename)
 
     return result, sources
