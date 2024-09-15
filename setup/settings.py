@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path, os
 from dotenv import load_dotenv
+import os
+from google.oauth2 import service_account
 
 load_dotenv()
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -119,20 +122,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# Caminho para arquivos estáticos
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'setup/static')
-]
+# Configuração para Google Cloud Storage
+GS_BUCKET_NAME = 'synthify-fiap-2024'  # Substitua pelo nome do seu bucket
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, 'cloud-storage.json')
+)
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Configuração do Django Storages
+STORAGES = {
+    'default': {
+        'BACKEND': 'storages.backends.gcloud.GoogleCloudStorage',
+        'CREDENTIALS': GS_CREDENTIALS,
+        'BUCKET_NAME': GS_BUCKET_NAME,
+    },
+    'staticfiles': {  # Define o armazenamento 'staticfiles'
+        'BACKEND': 'storages.backends.gcloud.GoogleCloudStorage',
+        'CREDENTIALS': GS_CREDENTIALS,
+        'BUCKET_NAME': GS_BUCKET_NAME,
+    },
+}
+
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
