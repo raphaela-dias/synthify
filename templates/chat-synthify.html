@@ -61,7 +61,7 @@
                 <!-- Formulário de Upload -->
                 <form id="uploadForm" method="POST" enctype="multipart/form-data" action="{% url 'upload_file' %}" style="display: none;">
                     {% csrf_token %}
-                    <input type="file" name="file" id="fileInput" accept=".docx,.xlsx" onchange="this.form.submit()">
+                    <input type="file" name="file" id="fileInput" accept=".docx,.xlsx">
                 </form>
 
                 <div class="response-area">
@@ -75,10 +75,38 @@
     </div>
 
     <script>
+        // Evento para o botão de upload
         document.getElementById('uploadBtn').addEventListener('click', function() {
             document.getElementById('fileInput').click();
         });
 
+        // Enviar o arquivo via AJAX quando selecionado
+        document.getElementById('fileInput').addEventListener('change', function() {
+            const form = document.getElementById('uploadForm');
+            const formData = new FormData(form);
+
+            fetch("{% url 'upload_file' %}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Upload feito com sucesso');
+                    document.getElementById('fileInput').value = ''; // Limpa o input de arquivo após o sucesso
+                } else {
+                    alert('Ocorreu um erro ao enviar o arquivo.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar o arquivo.');
+            });
+        });
+
+        // Evento para buscar nas documentações
         document.getElementById('searchDocsBtn').addEventListener('click', function() {
             const query = document.getElementById('questionInput').value;
 
@@ -100,6 +128,7 @@
             .catch(error => console.error('Error:', error));
         });
 
+        // Evento para buscar no histórico de tickets
         document.getElementById('searchTicketsBtn').addEventListener('click', function() {
             const query = document.getElementById('questionInput').value;
 

@@ -29,7 +29,7 @@ def sobre(request):
     return render(request, 'sobre.html')
 
 def upload_file(request):
-    if request.method == 'POST' and request.FILES['file']:
+    if request.method == 'POST' and request.FILES.get('file'):
         uploaded_file = request.FILES['file']
         fs = FileSystemStorage()
         
@@ -37,19 +37,30 @@ def upload_file(request):
         file_name = fs.save(uploaded_file.name, uploaded_file)
         file_path = fs.path(file_name)
 
-        # Verifica a extensão do arquivo e salva na pasta correta (embeddings)
-        if file_name.endswith('.docx'):
-            upload_docx(file_path)
-            destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_docx')
-        elif file_name.endswith('.xlsx'):
-            upload_excel(file_path)
-            destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_excel')
+        try:
+            # Verifica a extensão do arquivo e salva na pasta correta (embeddings)
+            if file_name.endswith('.docx'):
+                upload_docx(file_path)  # Função de processamento do .docx
+                destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_docx')
+            elif file_name.endswith('.xlsx'):
+                upload_excel(file_path)  # Função de processamento do .xlsx
+                destination_dir = os.path.join(settings.MEDIA_ROOT, 'db_excel')
+            else:
+                return JsonResponse({'error': 'Formato de arquivo não suportado.'}, status=400)
 
-        # Move o arquivo para a pasta correta
-        os.makedirs(destination_dir, exist_ok=True)
-        os.rename(file_path, os.path.join(destination_dir, file_name))
+            # Move o arquivo para a pasta correta
+            os.makedirs(destination_dir, exist_ok=True)
+            os.rename(file_path, os.path.join(destination_dir, file_name))
 
-    return render(request, 'chat-synthify.html')
+            # Retorna uma resposta de sucesso
+            return JsonResponse({'message': 'Upload feito com sucesso!'}, status=200)
+
+        except Exception as e:
+            # Retorna erro se algo deu errado durante o upload
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'error': 'Nenhum arquivo enviado.'}, status=400)
+
 
 def search_docs(request):
     if request.method == 'POST':
